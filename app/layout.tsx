@@ -1,28 +1,30 @@
-import type {Metadata} from 'next';
-import './globals.css';
-import { Toaster } from "@/components/ui/toaster"
+import type React from "react"
+import type { Metadata } from "next"
+import { Poppins } from "next/font/google"
+import "./globals.css"
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+})
 
 export const metadata: Metadata = {
-  title: 'Saúde Segura - Ricelli Daumas',
-  description: 'Planos de Saúde, Odontológicos e Seguros com atendimento personalizado por Ricelli Daumas.',
-};
+  title: "Ricelli Daumas - Planos de Saúde e Seguros",
+  description:
+    "Planos de Saúde, Odontológicos e Seguros com atendimento personalizado. Corretora especializada com as melhores operadoras do mercado.",
+  keywords: "planos de saúde, seguro saúde, plano odontológico, corretora de seguros, Rio de Janeiro",
+    generator: 'v0.app'
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@700;900&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased">
-        {children}
-        <Toaster />
-      </body>
+    <html lang="pt-BR">
+      <body className={poppins.className}>{children}</body>
     </html>
-  );
+  )
 }
